@@ -1,0 +1,39 @@
+{
+  "name": "markdown-it-toc-and-anchor",
+  "version": "1.0.0",
+  "description": "markdown-it plugin to add toc and anchor links in headings",
+  "keywords": [
+    "makrdown-it",
+    "makrdown-it-plugin",
+    "makrdown",
+    "toc",
+    "anchor"
+  ],
+  "author": "Maxime Thirouin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MoOx/markdown-it-toc-and-anchor.git"
+  },
+  "homepage": "https://github.com/MoOx/markdown-it-toc-and-anchor",
+  "bugs": {
+    "url": "https://github.com/MoOx/markdown-it-toc-and-anchor/issues"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "markdown-it": "^4.2.1"
+  },
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "babel-eslint": "^3.1.9",
+    "babel-tape-runner": "^1.1.0",
+    "eslint": "^0.22.1",
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "tape": "babel-tape-runner '__tests__/*.js'",
+    "test": "npm run lint && npm run tape",
+    "prepublish": "babel src --out-dir dist"
+  }
+}
