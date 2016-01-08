@@ -34,6 +34,32 @@ const space = () => {
   return {...(new Token("text", "", 0)), content: " "}
 }
 
+const renderAnchorLinkSymbol = (options) => {
+  if (options.anchorLinkSymbolClassName) {
+    return [
+      {
+        ...(new Token("span_open", "span", 1)),
+        attrs: [
+          ["class", options.anchorLinkSymbolClassName],
+        ],
+      },
+      {
+        ...(new Token("text", "", 0)),
+        content: options.anchorLinkSymbol,
+      },
+      new Token("span_close", "span", -1),
+    ]
+  }
+  else {
+    return [
+      {
+      ...(new Token("text", "", 0)),
+      content: options.anchorLinkSymbol,
+      },
+    ]
+  }
+}
+
 const renderAnchorLink = (anchor, options, tokens, idx) => {
   const linkTokens = [
     {
@@ -43,10 +69,7 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
         ["href", `#${anchor}`],
       ],
     },
-    {
-      ...(new Token("text", "", 0)),
-      content: options.anchorLinkSymbol,
-    },
+    ...(renderAnchorLinkSymbol(options)),
     new Token("link_close", "a", -1),
   ]
 
@@ -56,7 +79,11 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
     false: "push",
     true: "unshift",
   }
-  linkTokens[actionOnArray[!options.anchorLinkBefore]](space())
+
+  // insert space between symbol and heading ?
+  if (options.anchorLinkSymbolSpace) {
+    linkTokens[actionOnArray[!options.anchorLinkBefore]](space())
+  }
   tokens[idx + 1].children[
     actionOnArray[options.anchorLinkBefore]
   ](...linkTokens)
@@ -90,6 +117,8 @@ export default function(md, options) {
     anchorClassName: "markdownIt-Anchor",
     resetIds: true,
     indentation: "  ",
+    anchorLinkSymbolSpace: true,
+    anchorLinkSymbolClassName: null,
     ...options,
   }
 
