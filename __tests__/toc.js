@@ -76,7 +76,7 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
         anchorClassName: "anchor",
         anchorLinkSymbol: "",
         anchorLinkSymbolClassName: "octicon octicon-link",
-        anchorLinkSymbolSpace: false,
+        anchorLinkSpace: false,
       }
     ),
     `<p>

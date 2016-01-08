@@ -81,7 +81,7 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
   }
 
   // insert space between symbol and heading ?
-  if (options.anchorLinkSymbolSpace) {
+  if (options.anchorLinkSpace) {
     linkTokens[actionOnArray[!options.anchorLinkBefore]](space())
   }
   tokens[idx + 1].children[
@@ -117,7 +117,7 @@ export default function(md, options) {
     anchorClassName: "markdownIt-Anchor",
     resetIds: true,
     indentation: "  ",
-    anchorLinkSymbolSpace: true,
+    anchorLinkSpace: true,
     anchorLinkSymbolClassName: null,
     ...options,
   }

@@ -58,11 +58,11 @@ Allow you to enable/disable the anchor link in the headings
 
 Allow you to customize the anchor link symbol
 
-#### `anchorLinkSymbolSpace`
+#### `anchorLinkSpace`
 
 (default: `true`)
 
-Allow you to enable/disable inserting a space between the anchor symbol and heading.
+Allow you to enable/disable inserting a space between the anchor link and heading.
 
 #### `anchorLinkSymbolClassName`
 
