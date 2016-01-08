@@ -1,4 +1,5 @@
 import Token from "markdown-it/lib/token"
+import uslug from "uslug"
 
 var TOC = "@[toc]"
 var TOC_RE = /^@\[toc\]/im
@@ -8,15 +9,7 @@ let headingIds = {}
 const repeat = (string, num) => new Array(num + 1).join(string)
 
 const makeSafe = (string) => {
-  const key = string
-    // url in lower case are cool
-    .toLowerCase()
-
-    // dashify
-    .replace(/\W+/g, "-")
-    .replace(/^-+/, "")
-    .replace(/-+$/, "")
-
+  const key = uslug(string) // slugify
   if (!headingIds[key]) {
     headingIds[key] = 0
   }
