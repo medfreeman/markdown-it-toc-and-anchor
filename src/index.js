@@ -80,7 +80,7 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
     true: "unshift",
   }
 
-  // insert space between symbol and heading ?
+  // insert space between anchor link and heading ?
   if (options.anchorLinkSpace) {
     linkTokens[actionOnArray[!options.anchorLinkBefore]](space())
   }
