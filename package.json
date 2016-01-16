@@ -14,7 +14,8 @@
   "repository": "https://github.com/MoOx/markdown-it-toc-and-anchor.git",
   "main": "dist/index.js",
   "dependencies": {
-    "markdown-it": "^5.0.0"
+    "markdown-it": "^5.0.0",
+    "uslug": "^1.0.3"
   },
   "devDependencies": {
     "babel": "^5.4.7",

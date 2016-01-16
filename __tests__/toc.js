@@ -50,6 +50,50 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
   t.equal(
     mdIt(
       `@[toc]
+# 新年快乐`,
+      {
+        toc: true,
+      }
+    ),
+    `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#新年快乐">新年快乐</a>
+  </li>
+</ul>
+</p>
+<h1 id="新年快乐">新年快乐</h1>\n`,
+    "should support unicode headings"
+  )
+
+  t.equal(
+    mdIt(
+      `@[toc]
+# Heading`,
+      {
+        toc: true,
+        anchorLink: true,
+        anchorClassName: "anchor",
+        anchorLinkSymbol: "",
+        anchorLinkSymbolClassName: "octicon octicon-link",
+        anchorLinkSpace: false,
+      }
+    ),
+    `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading"><a class="anchor" href="#heading">` +
+    `<span class="octicon octicon-link"></span></a>Heading</h1>\n`,
+    "should support GitHub style anchor link"
+  )
+
+  t.equal(
+    mdIt(
+      `@[toc]
 # Heading
 ## Two
 ### Three
