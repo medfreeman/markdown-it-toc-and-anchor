@@ -36,7 +36,7 @@
     "lint": "eslint .",
     "tests": "ava '**/__tests__/*.js'",
     "test": "npm run lint && npm run tests",
-    "prepublish": "babel src --out-dir dist"
+    "prepublish": "babel --ignore __tests__ src --out-dir dist"
   },
   "babel": {
     "presets": [
