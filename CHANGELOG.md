@@ -1,3 +1,4 @@
+# 2.1.0 - 2016-01-17
 
 - Fixed: Should support unicode heading
 ([#5](https://github.com/MoOx/markdown-it-toc-and-anchor/issues/5)
