@@ -1,16 +1,15 @@
-import tape from "tape"
+import test from "ava"
 import mdIt from "./utils/md-it"
 
-tape("markdown-it-toc-and-anchor anchor", (t) => {
-
-  t.equal(
+test("markdown-it-toc-and-anchor anchor", (t) => {
+  t.is(
     mdIt(
       `@[toc](Title)
 # 'Heading' ?
 # $.lel!
 # $.lel?
 `,
-      {anchorLink: true}
+      { anchorLink: true }
     ),
 /* eslint-disable max-len */
   `<p></p>
@@ -20,6 +19,4 @@ tape("markdown-it-toc-and-anchor anchor", (t) => {
 /* eslint-enable max-len */
     "should add anchors"
   )
-
-  t.end()
 })

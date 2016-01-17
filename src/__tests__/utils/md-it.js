@@ -1,11 +1,11 @@
 import markdownIt from "markdown-it"
-import markdownItTocAndAnchor from "../../src"
+import markdownItTocAndAnchor from "../../../src"
 
 export default (md, options = {}) => markdownIt({
-    html: true,
-    linkify: true,
-    typography: true,
-  })
+  html: true,
+  linkify: true,
+  typography: true,
+})
     .use(markdownItTocAndAnchor, {
 
       // disable main features

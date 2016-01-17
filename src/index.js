@@ -1,8 +1,8 @@
 import Token from "markdown-it/lib/token"
 import uslug from "uslug"
 
-var TOC = "@[toc]"
-var TOC_RE = /^@\[toc\]/im
+const TOC = "@[toc]"
+const TOC_RE = /^@\[toc\]/im
 
 let headingIds = {}
 
@@ -31,7 +31,7 @@ const getAnchor = (token) => {
 }
 
 const space = () => {
-  return {...(new Token("text", "", 0)), content: " "}
+  return { ...(new Token("text", "", 0)), content: " " }
 }
 
 const renderAnchorLinkSymbol = (options) => {
@@ -40,7 +40,7 @@ const renderAnchorLinkSymbol = (options) => {
       {
         ...(new Token("span_open", "span", 1)),
         attrs: [
-          ["class", options.anchorLinkSymbolClassName],
+          [ "class", options.anchorLinkSymbolClassName ],
         ],
       },
       {
@@ -53,8 +53,8 @@ const renderAnchorLinkSymbol = (options) => {
   else {
     return [
       {
-      ...(new Token("text", "", 0)),
-      content: options.anchorLinkSymbol,
+        ...(new Token("text", "", 0)),
+        content: options.anchorLinkSymbol,
       },
     ]
   }
@@ -65,8 +65,8 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
     {
       ...(new Token("link_open", "a", 1)),
       attrs: [
-        ["class", options.anchorClassName],
-        ["href", `#${anchor}`],
+        [ "class", options.anchorClassName ],
+        [ "href", `#${anchor}` ],
       ],
     },
     ...(renderAnchorLinkSymbol(options)),
@@ -175,7 +175,7 @@ export default function(md, options) {
       token = state.push("toc_close", "toc", -1)
 
       // Update pos so the parser can continue
-      var newline = state.src.indexOf("\n")
+      const newline = state.src.indexOf("\n")
       if (newline !== -1) {
         state.pos = state.pos + newline
       }
@@ -193,7 +193,7 @@ export default function(md, options) {
 
     const attrs = tokens[idx].attrs = tokens[idx].attrs || []
     const anchor = getAnchor(tokens[idx + 1])
-    attrs.push(["id", anchor])
+    attrs.push([ "id", anchor ])
 
     if (options.anchorLink) {
       renderAnchorLink(anchor, options, ...args)
@@ -231,7 +231,7 @@ export default function(md, options) {
         }
       }
 
-      const tree = {nodes: []}
+      const tree = { nodes: [] }
       // create an ast
       headings.forEach(heading => {
         if (heading.level < options.tocFirstLevel) {

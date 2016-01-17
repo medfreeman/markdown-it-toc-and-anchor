@@ -1,8 +1,8 @@
-import tape from "tape"
+import test from "ava"
 import mdIt from "./utils/md-it"
 
-tape("markdown-it-toc-and-anchor option: indentation", (t) => {
-  t.equal(
+test("markdown-it-toc-and-anchor option: indentation", (t) => {
+  t.is(
     mdIt(
       `@[toc]
 # Heading 1
@@ -22,6 +22,4 @@ tape("markdown-it-toc-and-anchor option: indentation", (t) => {
 <h1 id="heading-1">Heading 1</h1>\n`,
     "should works with no indentation"
   )
-
-  t.end()
 })

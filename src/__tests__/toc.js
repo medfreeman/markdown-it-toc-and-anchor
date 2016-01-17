@@ -1,18 +1,18 @@
-import tape from "tape"
+import test from "ava"
 import mdIt from "./utils/md-it"
 
-tape("markdown-it-toc-and-anchor toc", (t) => {
+test("markdown-it-toc-and-anchor toc", (t) => {
 
-  t.equal(
+  t.is(
     mdIt(
       "",
-      {toc: true}
+      { toc: true }
     ),
     ``,
     "should works with nothing"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       "@[toc]"
     ),
@@ -20,10 +20,10 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should do nothing if not asked to"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       "@[toc]",
-      {toc: true}
+      { toc: true }
     ),
     `<p>
 <ul class="markdownIt-TOC">
@@ -32,7 +32,7 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should works with no heading"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       "@[toc]",
       {
@@ -47,7 +47,7 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should allow custom class"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 # 新年快乐`,
@@ -66,7 +66,7 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should support unicode headings"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 # Heading`,
@@ -91,7 +91,7 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should support GitHub style anchor link"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 # Heading
@@ -122,12 +122,12 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should works when skipping first level"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 # Heading
 # Heading`,
-      {toc: true}
+      { toc: true }
     ),
     `<p>
 <ul class="markdownIt-TOC">
@@ -144,14 +144,14 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should works with smiliar levels and similar titles"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 # 'Heading' ?
 # $.lel!
 # $.lel?
 `,
-      {toc: true}
+      { toc: true }
     ),
   `<p>
 <ul class="markdownIt-TOC">
@@ -172,13 +172,13 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should works with special chars"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 ### a
 # b
 `,
-      {toc: true}
+      { toc: true }
     ),
     `<p>
 <ul class="markdownIt-TOC">
@@ -203,14 +203,14 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
     "should works when not starting with h1"
   )
 
-  t.equal(
+  t.is(
     mdIt(
       `@[toc]
 # Heading 1
 ## SubHeading
 # Heading 2
 ### Deeper Heading`,
-      {toc: true}
+      { toc: true }
     ),
     `<p>
 <ul class="markdownIt-TOC">
@@ -242,6 +242,4 @@ tape("markdown-it-toc-and-anchor toc", (t) => {
 <h3 id="deeper-heading">Deeper Heading</h3>\n`,
     "should works"
   )
-
-  t.end()
 })
