@@ -242,4 +242,106 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <h3 id="deeper-heading">Deeper Heading</h3>\n`,
     "should works"
   )
+
+  t.same(
+    mdIt(
+      [`# Heading`, `# Heading`, `# Heading`],
+      { resetIds: true }
+    ),
+    [`<h1 id="heading">Heading</h1>\n`, `<h1 id="heading">Heading</h1>\n`, `<h1 id="heading">Heading</h1>\n`],
+    "should return the same anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is true "
+  )
+
+  t.same(
+    mdIt(
+      [`# Heading`, `# Heading`, `# Heading`],
+      { resetIds: false }
+    ),
+    [`<h1 id="heading">Heading</h1>\n`, `<h1 id="heading-2">Heading</h1>\n`, `<h1 id="heading-3">Heading</h1>\n`],
+    "should return different anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is false "
+  )
+
+  t.same(
+    mdIt(
+      [`@[toc]
+# Heading`,
+       `@[toc]
+# Heading`,
+       `@[toc]
+# Heading`],
+      {
+        toc: true,
+        resetIds: true
+      }
+    ),
+    [
+      `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>\n`,
+      `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>\n`,
+      `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>\n`,
+    ],
+    "should return the same anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is true and toc is true"
+  )
+
+  t.same(
+    mdIt(
+      [`@[toc]
+# Heading`,
+       `@[toc]
+# Heading`,
+       `@[toc]
+# Heading`],
+      {
+        toc: true,
+        resetIds: false
+      }
+    ),
+    [
+      `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>\n`,
+      `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading-2">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading-2">Heading</h1>\n`,
+      `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading-3">Heading</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading-3">Heading</h1>\n`,
+    ],
+    "should return different anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is false and toc is true"
+  )
 })
