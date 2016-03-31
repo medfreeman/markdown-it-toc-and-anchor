@@ -1,5 +1,6 @@
-import Token from "markdown-it/lib/token"
 import uslug from "uslug"
+
+let Token = () => {}
 
 const TOC = "@[toc]"
 const TOC_RE = /^@\[toc\]/im
@@ -124,8 +125,9 @@ export default function(md, options) {
 
   let gstate
 
-  md.core.ruler.push("grab_state", function(state) {
+  md.core.ruler.push("grab_state_and_token", function(state) {
     gstate = state
+    Token = state.Token
   })
 
   md.inline.ruler.after(
