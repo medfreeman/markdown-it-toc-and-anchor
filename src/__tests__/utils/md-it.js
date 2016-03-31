@@ -22,7 +22,7 @@ export default (md, options = {}) => {
         return mdIt.render(md)
     } else if (md.constructor === Array) {
         for (let s of md) {
-            mdRender.push('' + mdIt.render(s) + '')
+            mdRender.push(mdIt.render(s))
         }
         return mdRender
     }
