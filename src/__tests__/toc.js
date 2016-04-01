@@ -245,33 +245,47 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 
   t.same(
     mdIt(
-      [`# Heading`, `# Heading`, `# Heading`],
+      [ `# Heading`, `# Heading`, `# Heading` ],
       { resetIds: true }
     ),
-    [`<h1 id="heading">Heading</h1>\n`, `<h1 id="heading">Heading</h1>\n`, `<h1 id="heading">Heading</h1>\n`],
-    "should return the same anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is true "
+    [
+      `<h1 id="heading">Heading</h1>\n`,
+      `<h1 id="heading">Heading</h1>\n`,
+      `<h1 id="heading">Heading</h1>\n`,
+    ],
+    `should return the same anchor hrefs for the same markdown headings with
+same names on different renderings with the same markdownIt instance when 
+resetIds is true`
   )
 
   t.same(
     mdIt(
-      [`# Heading`, `# Heading`, `# Heading`],
+      [ `# Heading`, `# Heading`, `# Heading` ],
       { resetIds: false }
     ),
-    [`<h1 id="heading">Heading</h1>\n`, `<h1 id="heading-2">Heading</h1>\n`, `<h1 id="heading-3">Heading</h1>\n`],
-    "should return different anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is false "
+    [
+      `<h1 id="heading">Heading</h1>\n`,
+      `<h1 id="heading-2">Heading</h1>\n`,
+      `<h1 id="heading-3">Heading</h1>\n`,
+    ],
+    `should return different anchor hrefs for the same markdown headings with 
+same names on different renderings with the same markdownIt instance when 
+resetIds is false`
   )
 
   t.same(
     mdIt(
-      [`@[toc]
+      [
+        `@[toc]
 # Heading`,
-       `@[toc]
+        `@[toc]
 # Heading`,
-       `@[toc]
-# Heading`],
+        `@[toc]
+# Heading`,
+      ],
       {
         toc: true,
-        resetIds: true
+        resetIds: true,
       }
     ),
     [
@@ -300,20 +314,24 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 </p>
 <h1 id="heading">Heading</h1>\n`,
     ],
-    "should return the same anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is true and toc is true"
+    `should return the same anchor hrefs for the same markdown headings with 
+same names on different renderings with the same markdownIt instance when 
+resetIds is true and toc is true`
   )
 
   t.same(
     mdIt(
-      [`@[toc]
+      [
+        `@[toc]
 # Heading`,
-       `@[toc]
+        `@[toc]
 # Heading`,
-       `@[toc]
-# Heading`],
+        `@[toc]
+# Heading`,
+      ],
       {
         toc: true,
-        resetIds: false
+        resetIds: false,
       }
     ),
     [
@@ -342,6 +360,8 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 </p>
 <h1 id="heading-3">Heading</h1>\n`,
     ],
-    "should return different anchor hrefs for the same markdown headings with same names on different renderings with the same markdownIt instance when resetIds is false and toc is true"
+    `should return different anchor hrefs for the same markdown headings with 
+same names on different renderings with the same markdownIt instance when 
+resetIds is false and toc is true`
   )
 })
