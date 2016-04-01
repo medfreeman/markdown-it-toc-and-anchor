@@ -121,6 +121,40 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <h1 id="one">One</h1>\n`,
     "should works when skipping first level"
   )
+  
+  t.is(
+    mdIt(
+      `@[toc]
+# Heading
+## Two
+### Three
+# One`,
+      {
+        toc: true,
+        tocLastLevel: 2,
+      }
+    ),
+    `<p>
+<ul class="markdownIt-TOC">
+  <li>
+    <a href="#heading">Heading</a>
+    <ul>
+      <li>
+        <a href="#two">Two</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#one">One</a>
+  </li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>
+<h2 id="two">Two</h2>
+<h3 id="three">Three</h3>
+<h1 id="one">One</h1>\n`,
+    "should work when skipping last level"
+  )
 
   t.is(
     mdIt(
