@@ -68,6 +68,13 @@ Option to customize html class of the `<ul>` wrapping the toc
 Allow you to skip some heading level. Example: use 2 if you want to skip `<h1>`
 from the TOC.
 
+#### `tocLastLevel`
+
+(default: `6`)
+
+Allow you to skip some heading level. Example: use 5 if you want to skip `<h6>`
+from the TOC.
+
 #### `anchorLink`
 
 (default: `true`)
