@@ -10,6 +10,8 @@ $ npm install markdown-it-toc-and-anchor
 
 ## Usage
 
+### ES6
+
 ```js
 import markdownIt from "markdown-it"
 import markdownItTocAndAnchor from "markdown-it-toc-and-anchor"
@@ -24,6 +26,26 @@ markdownIt({
     })
     .render(md)
 ```
+
+### ES5 / CommonJS
+
+```js
+var markdownIt = require('markdown-it'),
+    markdownItTocAndAnchor = require('markdown-it-toc-and-anchor').default;
+
+markdownIt({
+    html: true,
+    linkify: true,
+    typography: true,
+  })
+    .use(markdownItTocAndAnchor, {
+      // ...options
+    })
+    .render(md)
+```
+
+:information_source: Note that the 'default' property has to be used when requiring this plugin, this is due to the use of Babel 6 now making ES6 compliant exports ([Misunderstanding ES6 Modules, Upgrading Babel, Tears, and a Solution
+](https://medium.com/@kentcdodds/misunderstanding-es6-modules-upgrading-babel-tears-and-a-solution-ad2d5ab93ce0#.enq6dfcnn))
 
 ### Options
 
