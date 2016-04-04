@@ -1,3 +1,6 @@
+# 3.0.0 - 2016-04-04
+
+**No API changes**.
 
 - Changed: this plugin does not require ``markdown-it`` anymore
   ([#2](https://github.com/MoOx/markdown-it-toc-and-anchor/issues/2))

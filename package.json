@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-toc-and-anchor",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "markdown-it plugin to add toc and anchor links in headings",
   "keywords": [
     "makrdown-it",
@@ -30,13 +30,15 @@
     "babel-preset-stage-2": "^6.3.13",
     "eslint": "^1.10.3",
     "eslint-config-i-am-meticulous": "^1.0.0",
-    "markdown-it": "^5.0.0"
+    "markdown-it": "^5.0.0",
+    "npmpub": "^3.1.0"
   },
   "scripts": {
     "lint": "eslint .",
     "tests": "ava '**/__tests__/*.js'",
     "test": "npm run lint && npm run tests",
-    "prepublish": "babel --ignore __tests__ src --out-dir dist"
+    "prepublish": "babel --ignore __tests__ src --out-dir dist",
+    "release": "npmpub"
   },
   "babel": {
     "presets": [
