@@ -34,8 +34,8 @@
     "npmpub": "^3.1.0"
   },
   "scripts": {
-    "lint": "eslint .",
-    "tests": "ava '**/__tests__/*.js'",
+    "lint": "eslint ./src/",
+    "tests": "ava",
     "test": "npm run lint && npm run tests",
     "prepublish": "babel --ignore __tests__ src --out-dir dist",
     "release": "npmpub"
@@ -52,6 +52,9 @@
     ]
   },
   "ava": {
+    "files": [
+      "**/__tests__/*.js"
+    ],
     "require": [
       "babel-core/register"
     ]
