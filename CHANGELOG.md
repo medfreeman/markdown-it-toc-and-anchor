@@ -1,3 +1,8 @@
+# 3.0.1 - 2016-04-10
+
+- Fixed: Reset anchor ids
+  ([#13]((https://github.com/MoOx/markdown-it-toc-and-anchor/issues/13))
+
 # 3.0.0 - 2016-04-04
 
 **No API changes**.
