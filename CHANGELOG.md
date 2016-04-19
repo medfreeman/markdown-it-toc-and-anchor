@@ -1,3 +1,8 @@
+# 3.1.0 - 2016-04-19
+
+- Added: ``tocLastLevel`` option to skip some upper heading levels
+  ([#1](https://github.com/MoOx/markdown-it-toc-and-anchor/issues/1))
+
 # 3.0.2 - 2016-04-19
 
 - Fixed: eslint command now using gitignore (fix for Windows), automatic syntax fix
