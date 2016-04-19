@@ -1,3 +1,9 @@
+# 3.0.2 - 2016-04-19
+
+- Fixed: eslint command now using gitignore (fix for Windows), automatic syntax fix
+- Fixed: ava configuration (fix for Windows)
+  ([#14](https://github.com/MoOx/markdown-it-toc-and-anchor/issues/14))
+
 # 3.0.1 - 2016-04-10
 
 - Fixed: Reset anchor ids
