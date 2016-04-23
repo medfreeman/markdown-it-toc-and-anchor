@@ -1,3 +1,7 @@
+# 4.1.0 - 2016-04-24
+
+- Added: ``tocCallback`` option to allow getting toc elements in addition to / instead of @[toc] transformation
+
 # 4.0.0 - 2016-04-23
 
 - Changed: refactored toc generation to allow full markdown processing
