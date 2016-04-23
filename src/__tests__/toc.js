@@ -9,7 +9,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
       { toc: true }
     ),
     ``,
-    "should works with nothing"
+    "should work with nothing"
   )
 
   t.is(
@@ -29,7 +29,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <ul class="markdownIt-TOC">
 </ul>
 </p>\n`,
-    "should works with no heading"
+    "should work with no heading"
   )
 
   t.is(
@@ -119,7 +119,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <h2 id="two">Two</h2>
 <h3 id="three">Three</h3>
 <h1 id="one">One</h1>\n`,
-    "should works when skipping first level"
+    "should work when skipping first level"
   )
   
   t.is(
@@ -175,7 +175,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 </p>
 <h1 id="heading">Heading</h1>
 <h1 id="heading-2">Heading</h1>\n`,
-    "should works with smiliar levels and similar titles"
+    "should work with smiliar levels and similar titles"
   )
 
   t.is(
@@ -203,7 +203,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <h1 id="heading">'Heading' ?</h1>
 <h1 id="lel">$.lel!</h1>
 <h1 id="lel-2">$.lel?</h1>\n`,
-    "should works with special chars"
+    "should work with special chars"
   )
 
   t.is(
@@ -234,7 +234,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 </p>
 <h3 id="a">a</h3>
 <h1 id="b">b</h1>\n`,
-    "should works when not starting with h1"
+    "should work when not starting with h1"
   )
 
   t.is(
@@ -274,7 +274,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <h2 id="subheading">SubHeading</h2>
 <h1 id="heading-2">Heading 2</h1>
 <h3 id="deeper-heading">Deeper Heading</h3>\n`,
-    "should works"
+    "should work"
   )
 
   t.same(

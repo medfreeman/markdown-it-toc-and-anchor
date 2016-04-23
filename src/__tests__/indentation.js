@@ -20,6 +20,6 @@ test("markdown-it-toc-and-anchor option: indentation", (t) => {
 </ul>
 </p>
 <h1 id="heading-1">Heading 1</h1>\n`,
-    "should works with no indentation"
+    "should work with no indentation"
   )
 })

@@ -53,7 +53,7 @@ markdownIt({
 
 (default: `true`)
 
-Allow you to enable/disable the toc transformation of `@[toc]`
+Allows you to enable/disable the toc transformation of `@[toc]`
 
 #### `tocClassName`
 
@@ -65,64 +65,64 @@ Option to customize html class of the `<ul>` wrapping the toc
 
 (default: `1`)
 
-Allow you to skip some heading level. Example: use 2 if you want to skip `<h1>`
+Allows you to skip some heading level. Example: use 2 if you want to skip `<h1>`
 from the TOC.
 
 #### `tocLastLevel`
 
 (default: `6`)
 
-Allow you to skip some heading level. Example: use 5 if you want to skip `<h6>`
+Allows you to skip some heading level. Example: use 5 if you want to skip `<h6>`
 from the TOC.
 
 #### `anchorLink`
 
 (default: `true`)
 
-Allow you to enable/disable the anchor link in the headings
+Allows you to enable/disable the anchor link in the headings
 
 #### `anchorLinkSymbol`
 
 (default: `"#"`)
 
-Allow you to customize the anchor link symbol
+Allows you to customize the anchor link symbol
 
 #### `anchorLinkSpace`
 
 (default: `true`)
 
-Allow you to enable/disable inserting a space between the anchor link and heading.
+Allows you to enable/disable inserting a space between the anchor link and heading.
 
 #### `anchorLinkSymbolClassName`
 
 (default: `null`)
 
-Allow you to customize the anchor link symbol class name. If not null, symbol will be rendered as `<span class="anchorLinkSymbolClassName">anchorLinkSymbol</span>`.
+Allows you to customize the anchor link symbol class name. If not null, symbol will be rendered as `<span class="anchorLinkSymbolClassName">anchorLinkSymbol</span>`.
 
 #### `anchorLinkBefore`
 
 (default: `true`)
 
-Allow you to prepend/append the anchor link in the headings
+Allows you to prepend/append the anchor link in the headings
 
 #### `anchorClassName`
 
 (default: `"markdownIt-Anchor"`)
 
-Allow you to customize the anchor link class
+Allows you to customize the anchor link class
 
 #### `resetIds`
 
 (default: `true`)
 
-Allow you to reset (or not) ids incrementation. Use it if you will have multiple
+Allows you to reset (or not) ids incrementation. Use it if you will have multiple
 documents on the same page.
 
 #### `indentation`
 
 (default: `"  "`)
 
-Allow you to customize indentation
+Allows you to customize indentation
 
 ---
 
