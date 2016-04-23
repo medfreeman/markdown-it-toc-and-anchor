@@ -1,15 +1,17 @@
+import clone from "clone"
 import uslug from "uslug"
-
-let Token = () => {}
 
 const TOC = "@[toc]"
 const TOC_RE = /^@\[toc\]/im
 
+let markdownItSecondInstance = () => {}
+let Token = () => {}
 let headingIds = {}
+let tocHtml = ""
 
 const repeat = (string, num) => new Array(num + 1).join(string)
 
-const makeSafe = (string) => {
+const makeSafe = (string, headingIds) => {
   const key = uslug(string) // slugify
   if (!headingIds[key]) {
     headingIds[key] = 0
@@ -18,17 +20,6 @@ const makeSafe = (string) => {
   return key + (
     headingIds[key] > 1 ? `-${headingIds[key]}` : ""
   )
-}
-
-const getAnchor = (token) => {
-  if (!token._tocAnchor) {
-    token._tocAnchor = makeSafe(
-      token.children
-        .reduce((acc, t) => acc + t.content, "")
-    )
-  }
-
-  return token._tocAnchor
 }
 
 const space = () => {
@@ -90,22 +81,50 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
   ](...linkTokens)
 }
 
-const treeToString = (tree, options, indent = 1) => tree.map(item => {
-  let node = `\n${ repeat(options.indentation, indent) }<li>`
+const treeToMarkdownBulletList = (tree, indent = 0) => tree.map(item => {
+  const indentation = `  `
+  let node = `${ repeat(indentation, indent) }*`
   if (item.heading.content) {
-    node += `\n${ repeat(options.indentation, indent + 1) }` +
-      `<a href="#${ item.heading.anchor }">${ item.heading.content }</a>`
+    node += ` ` +
+            `[${ item.heading.content }](#${ item.heading.anchor })\n`
+  }
+  else {
+    node += `\n`
   }
   if (item.nodes.length) {
-    node += `\n${ repeat(options.indentation, indent + 1) }` +
-      `<ul>` +
-      treeToString(item.nodes, options, indent + 2) +
-      `\n${ repeat(options.indentation, indent + 1) }` +
-      `</ul>`
+    node += treeToMarkdownBulletList(item.nodes, indent + 1)
   }
-  node += `\n${ repeat(options.indentation, indent) }</li>`
   return node
 }).join("")
+
+const generateTocMarkdownFromArray = (headings, options) => {
+  const tree = { nodes: [] }
+  // create an ast
+  headings.forEach(heading => {
+    if (heading.level < options.tocFirstLevel
+        || heading.level > options.tocLastLevel) {
+      return
+    }
+
+    let i = 1
+    let lastItem = tree
+    for (; i < heading.level - options.tocFirstLevel + 1; i++) {
+      if (lastItem.nodes.length === 0) {
+        lastItem.nodes.push({
+          heading: {},
+          nodes: [],
+        })
+      }
+      lastItem = lastItem.nodes[lastItem.nodes.length - 1]
+    }
+    lastItem.nodes.push({
+      heading: heading,
+      nodes: [],
+    })
+  })
+
+  return treeToMarkdownBulletList(tree.nodes)
+}
 
 export default function(md, options) {
   options = {
@@ -118,24 +137,71 @@ export default function(md, options) {
     anchorLinkBefore: true,
     anchorClassName: "markdownIt-Anchor",
     resetIds: true,
-    indentation: "  ",
     anchorLinkSpace: true,
     anchorLinkSymbolClassName: null,
     ...options,
   }
 
-  let gstate
+  markdownItSecondInstance = clone(md)
 
-  // reset keys id for each instance
+  // initialize key ids for each instance
   headingIds = {}
 
-  md.core.ruler.push("grab_state_and_token", function(state) {
-    gstate = state
+  md.core.ruler.push("init_toc", function(state) {
     Token = state.Token
-    // reset keys id for each document
+    const tokens = state.tokens
+
+    // reset key ids for each document
     if (options.resetIds) {
       headingIds = {}
     }
+
+    const tocArray = []
+    let tocMarkdown = ""
+    let tocTokens = []
+
+    for (let i = 0; i < tokens.length; i++) {
+      if (tokens[i].type !== "heading_close") {
+        continue
+      }
+
+      const heading = tokens[i - 1]
+      const heading_close = tokens[i]
+
+      if (heading.type === "inline") {
+        let content
+        if (heading.children && heading.children[0].type === "link_open") {
+          // headings that contain links have to be processed
+          // differently since nested links aren't allowed in markdown
+          content = heading.children[1].content
+          heading._tocAnchor = makeSafe(content, headingIds)
+        }
+        else {
+          content = heading.content
+          heading._tocAnchor = makeSafe(heading.children
+              .reduce((acc, t) => acc + t.content, ""), headingIds)
+        }
+
+        tocArray.push({
+          content,
+          anchor: heading._tocAnchor,
+          level: +heading_close.tag.substr(1, 1),
+        })
+      }
+    }
+
+    tocMarkdown = generateTocMarkdownFromArray(tocArray, options)
+
+    tocTokens = markdownItSecondInstance.parse(tocMarkdown)
+
+    // Adding tocClassName to 'ul' element
+    if (typeof tocTokens[0] === "object" &&
+        tocTokens[0].type === "bullet_list_open") {
+      const attrs = tocTokens[0].attrs = tocTokens[0].attrs || []
+      attrs.push([ "class", options.tocClassName ])
+    }
+
+    tocHtml = markdownItSecondInstance.renderer.render(tocTokens)
   })
 
   md.inline.ruler.after(
@@ -193,24 +259,24 @@ export default function(md, options) {
     }
   )
 
-  const originalHeadingOpen = md.renderer.rules.heading_open
+  const originalHeadingOpen = md.renderer.rules.heading_open ||
+    function(...args) {
+      const [ tokens, idx, options, , self ] = args
+      return self.renderToken(tokens, idx, options)
+    }
+
   md.renderer.rules.heading_open = function(...args) {
-    const [ tokens, idx, , , self ] = args
+    const [ tokens, idx, , , ] = args
 
     const attrs = tokens[idx].attrs = tokens[idx].attrs || []
-    const anchor = getAnchor(tokens[idx + 1])
+    const anchor = tokens[idx + 1]._tocAnchor
     attrs.push([ "id", anchor ])
 
     if (options.anchorLink) {
       renderAnchorLink(anchor, options, ...args)
     }
 
-    if (originalHeadingOpen) {
-      return originalHeadingOpen.apply(this, args)
-    }
-    else {
-      return self.renderToken(...args)
-    }
+    return originalHeadingOpen.apply(this, args)
   }
 
   md.renderer.rules.toc_open = () => ""
@@ -218,53 +284,7 @@ export default function(md, options) {
   md.renderer.rules.toc_body = () => ""
 
   if (options.toc) {
-    md.renderer.rules.toc_body = function() {
-      const headings = []
-      const gtokens = gstate.tokens
-
-      for (let i = 0; i < gtokens.length; i++) {
-        if (gtokens[i].type !== "heading_close") {
-          continue
-        }
-        const token = gtokens[i]
-        const heading = gtokens[i - 1]
-        if (heading.type === "inline") {
-          headings.push({
-            level: +token.tag.substr(1, 1),
-            anchor: getAnchor(heading),
-            content: heading.content,
-          })
-        }
-      }
-
-      const tree = { nodes: [] }
-      // create an ast
-      headings.forEach(heading => {
-        if (heading.level < options.tocFirstLevel
-            || heading.level > options.tocLastLevel) {
-          return
-        }
-
-        let i = 1
-        let lastItem = tree
-        for (; i < heading.level - options.tocFirstLevel + 1; i++) {
-          if (lastItem.nodes.length === 0) {
-            lastItem.nodes.push({
-              heading: {},
-              nodes: [],
-            })
-          }
-          lastItem = lastItem.nodes[lastItem.nodes.length - 1]
-        }
-        lastItem.nodes.push({
-          heading: heading,
-          nodes: [],
-        })
-      })
-
-      return `\n<ul class="${ options.tocClassName }">` +
-        treeToString(tree.nodes, options) +
-        "\n</ul>\n"
-    }
+    md.renderer.rules.toc_body =
+      () => tocHtml
   }
 }

@@ -19,6 +19,7 @@
     "!**/__tests__"
   ],
   "dependencies": {
+    "clone": "^1.0.2",
     "uslug": "^1.0.3"
   },
   "devDependencies": {
