@@ -118,12 +118,6 @@ Allows you to customize the anchor link class
 Allows you to reset (or not) ids incrementation. Use it if you will have multiple
 documents on the same page.
 
-#### `indentation`
-
-(default: `"  "`)
-
-Allows you to customize indentation
-
 ---
 
 ## CONTRIBUTING
