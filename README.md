@@ -75,6 +75,70 @@ from the TOC.
 Allows you to skip some heading level. Example: use 5 if you want to skip `<h6>`
 from the TOC.
 
+#### `tocCallback`
+
+(default: `null`)
+
+Allows you to get toc contents externally by executing a callback function returning toc elements, in addition / instead of using @[toc] tag in content.
+Example :
+
+```
+  markdownIt({
+    html: true,
+    linkify: true,
+    typography: true,
+  })
+    .use(markdownItTocAndAnchor, {
+      tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+        console.log(tocHtml)
+      }
+    })
+    .render(md)
+```
+
+To allow callback to be more flexible, this option is also available in global markdown-it options, and in render environment.
+Example :
+
+##### Callback in global markdown-it options
+
+```
+  var mdIt = markdownIt({
+    html: true,
+    linkify: true,
+    typography: true,
+  })
+    .use(markdownItTocAndAnchor)
+
+  ....
+
+  mdIt.set({
+    tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+      console.log(tocHtml)
+    }
+  })
+    .render(md)
+```
+
+##### Callback in render environment
+
+```
+  var mdIt = markdownIt({
+    html: true,
+    linkify: true,
+    typography: true,
+  })
+    .use(markdownItTocAndAnchor)
+
+  ....
+
+  mdIt
+    .render(md, {
+      tocCallback: function(tocMarkdown, tocArray, tocHtml) {
+        console.log(tocHtml)
+      }
+    })
+```
+
 #### `anchorLink`
 
 (default: `true`)

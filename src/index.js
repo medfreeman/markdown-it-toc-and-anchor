@@ -132,6 +132,7 @@ export default function(md, options) {
     tocClassName: "markdownIt-TOC",
     tocFirstLevel: 1,
     tocLastLevel: 6,
+    tocCallback: null,
     anchorLink: true,
     anchorLinkSymbol: "#",
     anchorLinkBefore: true,
@@ -202,6 +203,16 @@ export default function(md, options) {
     }
 
     tocHtml = markdownItSecondInstance.renderer.render(tocTokens)
+
+    if (typeof state.env.tocCallback === "function") {
+      state.env.tocCallback.call(undefined, tocMarkdown, tocArray, tocHtml)
+    }
+    else if (typeof options.tocCallback === "function") {
+      options.tocCallback.call(undefined, tocMarkdown, tocArray, tocHtml)
+    }
+    else if (typeof md.options.tocCallback === "function") {
+      md.options.tocCallback.call(undefined, tocMarkdown, tocArray, tocHtml)
+    }
   })
 
   md.inline.ruler.after(
