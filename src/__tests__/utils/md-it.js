@@ -1,11 +1,13 @@
 import markdownIt from "markdown-it"
 import markdownItTocAndAnchor from "../../../src"
 
-export default (md, options = {}) => {
+export default (md, options = {}, mdOptions = {}, renderEnv = {}) => {
   const mdIt = markdownIt({
     html: true,
     linkify: true,
     typography: true,
+
+    ...mdOptions,
   })
     .use(markdownItTocAndAnchor, {
 
@@ -19,11 +21,11 @@ export default (md, options = {}) => {
 
   const mdRender = []
   if (typeof md === "string") {
-    return mdIt.render(md)
+    return mdIt.render(md, renderEnv)
   }
   else if (md.constructor === Array) {
     for (const s of md) {
-      mdRender.push(mdIt.render(s))
+      mdRender.push(mdIt.render(s, renderEnv))
     }
     return mdRender
   }
