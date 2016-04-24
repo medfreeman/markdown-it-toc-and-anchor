@@ -8,7 +8,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
       `* [Heading](#heading)\n`,
       "should work with disabled toc insertion + callback, returning toc only"
     )
-    t.same(
+    t.deepEqual(
       tocArray,
       [
         {
@@ -30,7 +30,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
 
   t.is(
     mdIt(
-      `# Heading`,
+      "# Heading",
       {
         tocCallback: callback,
       }
@@ -49,7 +49,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
       `* [Heading](#heading)\n`,
       "should work with enabled toc insertion + callback, returning toc only"
     )
-    t.same(
+    t.deepEqual(
       tocArray,
       [
         {
@@ -97,7 +97,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
       `should work with disabled toc insertion +
       callback in md options, returning toc only`
     )
-    t.same(
+    t.deepEqual(
       tocArray,
       [
         {
@@ -121,7 +121,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
 
   t.is(
     mdIt(
-      `# Heading`,
+      "# Heading",
       {},
       {
         tocCallback: callback,
@@ -143,7 +143,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
       `should work with disabled toc insertion +
       callback in md render env, returning toc only`
     )
-    t.same(
+    t.deepEqual(
       tocArray,
       [
         {
@@ -167,7 +167,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
 
   t.is(
     mdIt(
-      `# Heading`,
+      "# Heading",
       {},
       {},
       {

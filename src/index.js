@@ -82,10 +82,10 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
 }
 
 const treeToMarkdownBulletList = (tree, indent = 0) => tree.map(item => {
-  const indentation = `  `
+  const indentation = "  "
   let node = `${ repeat(indentation, indent) }*`
   if (item.heading.content) {
-    node += ` ` +
+    node += " " +
             `[${ item.heading.content }](#${ item.heading.anchor })\n`
   }
   else {

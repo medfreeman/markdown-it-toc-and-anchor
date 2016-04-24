@@ -8,7 +8,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
       "",
       { toc: true }
     ),
-    ``,
+    "",
     "should work with nothing"
   )
 
@@ -238,12 +238,12 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 <h2 id="subheading">SubHeading</h2>
 <h1 id="heading-2">Heading 2</h1>
 <h3 id="deeper-heading">Deeper Heading</h3>\n`,
-    "should works"
+    "should work"
   )
 
-  t.same(
+  t.deepEqual(
     mdIt(
-      [ `# Heading`, `# Heading`, `# Heading` ],
+      [ "# Heading", "# Heading", "# Heading" ],
       { resetIds: true }
     ),
     [
@@ -256,9 +256,9 @@ same names on different renderings with the same markdownIt instance when
 resetIds is true`
   )
 
-  t.same(
+  t.deepEqual(
     mdIt(
-      [ `# Heading`, `# Heading`, `# Heading` ],
+      [ "# Heading", "# Heading", "# Heading" ],
       { resetIds: false }
     ),
     [
@@ -271,7 +271,7 @@ same names on different renderings with the same markdownIt instance when
 resetIds is false`
   )
 
-  t.same(
+  t.deepEqual(
     mdIt(
       [
         `@[toc]
@@ -308,7 +308,7 @@ same names on different renderings with the same markdownIt instance when
 resetIds is true and toc is true`
   )
 
-  t.same(
+  t.deepEqual(
     mdIt(
       [
         `@[toc]
