@@ -1,4 +1,4 @@
-# markdown-it-toc-and-anchor [![Travis Build Status](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor.svg)](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor)
+# markdown-it-toc-and-anchor [![Travis Build Status](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor.svg)](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor) [![Dependency Status](https://david-dm.org/MoOx/markdown-it-toc-and-anchor.svg)](https://david-dm.org/MoOx/markdown-it-toc-and-anchor)
 
 > markdown-it plugin to add toc and anchor links in headings
 
