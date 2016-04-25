@@ -1,3 +1,14 @@
-dist
+# OS X crap
+.DS_Store
+
+# no log
+.log
+
+# Node.js / npm
 node_modules
-npm-debug.log
+
+# build
+dist
+
+# code coverage
+.nyc_output
