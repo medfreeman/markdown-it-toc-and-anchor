@@ -1,5 +1,8 @@
 # markdown-it-toc-and-anchor
-[![Travis Build Status](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor.svg)](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor) [![Coverage Status](https://coveralls.io/repos/github/MoOx/markdown-it-toc-and-anchor/badge.svg?branch=master&bust=1)](https://coveralls.io/github/MoOx/markdown-it-toc-and-anchor?branch=master) [![npm version](https://badge.fury.io/js/markdown-it-toc-and-anchor.svg)](https://badge.fury.io/js/markdown-it-toc-and-anchor) [![Dependency Status](https://david-dm.org/MoOx/markdown-it-toc-and-anchor.svg)](https://david-dm.org/MoOx/markdown-it-toc-and-anchor)
+[![Build Status](https://img.shields.io/travis/MoOx/markdown-it-toc-and-anchor.svg?style=flat)](https://travis-ci.org/MoOx/markdown-it-toc-and-anchor)
+[![NPM version](https://img.shields.io/npm/v/markdown-it-toc-and-anchor.svg?style=flat)](https://www.npmjs.org/package/markdown-it-toc-and-anchor)
+[![Coverage Status](https://coveralls.io/repos/github/MoOx/markdown-it-toc-and-anchor/badge.svg?branch=master&service=github)](https://coveralls.io/github/MoOx/markdown-it-toc-and-anchor?branch=master)
+[![Dependency Status](https://david-dm.org/MoOx/markdown-it-toc-and-anchor.svg)](https://david-dm.org/MoOx/markdown-it-toc-and-anchor)
 
 > markdown-it plugin to add toc and anchor links in headings
 
