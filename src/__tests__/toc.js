@@ -31,6 +31,56 @@ test("markdown-it-toc-and-anchor toc", (t) => {
 
   t.is(
     mdIt(
+      `test
+@[toc]
+# Heading`,
+      {
+        toc: true,
+      }
+    ),
+    `<p>test
+<ul class="markdownIt-TOC">
+<li><a href="#heading">Heading</a></li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>\n`,
+    "should work with soft breaks"
+  )
+
+  t.is(
+    mdIt(
+      `@[tac]
+# Heading`,
+      {
+        toc: true,
+      }
+    ),
+    `<p>@[tac]</p>
+<h1 id="heading">Heading</h1>\n`,
+    "should not generate toc with different tokens starting with @["
+  )
+
+  t.is(
+    mdIt(
+      `@[toc]
+test
+# Heading`,
+      {
+        toc: true,
+      }
+    ),
+    `<p><ul class="markdownIt-TOC">
+<li><a href="#heading">Heading</a></li>
+</ul>
+
+test</p>
+<h1 id="heading">Heading</h1>\n`,
+    `should work when there is a line break between @[toc]
+and next element in the same inline token`
+  )
+
+  t.is(
+    mdIt(
       `@[toc]
 # Heading`,
       {
