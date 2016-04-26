@@ -7,8 +7,16 @@ environment:
     - nodejs_version: 5
 
 version: "{build}"
-build: off
+
+build:
+  - provider: Environment
+    name: production
+    on:
+      branch: master
+      appveyor_repo_tag: true
+
 deploy: off
+
 matrix:
   fast_finish: true
 
