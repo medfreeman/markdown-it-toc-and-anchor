@@ -12,10 +12,6 @@ deploy: off
 matrix:
   fast_finish: true
 
-# build cache to preserve files/folders between builds
-cache:
-  - node_modules # local npm modules
-
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm set progress=false
