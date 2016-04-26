@@ -42,7 +42,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
   t.end()
 })
 
-test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback-toc", (t) => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
@@ -89,7 +89,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
   t.end()
 })
 
-test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback-md", (t) => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
@@ -135,7 +135,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
   t.end()
 })
 
-test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback-env", (t) => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
