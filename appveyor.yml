@@ -8,6 +8,8 @@ environment:
 
 version: "{build}"
 
+build: off
+
 deploy: off
 
 matrix:
@@ -15,11 +17,11 @@ matrix:
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - npm -g install npm@3
+  - npm -g install npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm set progress=false
   - npm prune
-  - npm install --force
+  - npm install
 
 test_script:
   - node --version
