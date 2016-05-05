@@ -8,13 +8,6 @@ environment:
 
 version: "{build}"
 
-build:
-  - provider: Environment
-    name: production
-    on:
-      branch: master
-      appveyor_repo_tag: true
-
 deploy: off
 
 matrix:
