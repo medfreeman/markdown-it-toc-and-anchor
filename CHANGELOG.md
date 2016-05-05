@@ -1,3 +1,7 @@
+# 4.1.1 - 2016-05-05
+
+- Fixed: inexistent environment in markdown-it parsing on second instance
+
 # 4.1.0 - 2016-04-24
 
 - Added: ``tocCallback`` option to allow getting toc elements in addition to / instead of @[toc] transformation

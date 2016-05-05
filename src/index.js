@@ -193,7 +193,7 @@ export default function(md, options) {
 
     tocMarkdown = generateTocMarkdownFromArray(tocArray, options)
 
-    tocTokens = markdownItSecondInstance.parse(tocMarkdown)
+    tocTokens = markdownItSecondInstance.parse(tocMarkdown, {})
 
     // Adding tocClassName to 'ul' element
     if (typeof tocTokens[0] === "object" &&
