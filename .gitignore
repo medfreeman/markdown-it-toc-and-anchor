@@ -2,7 +2,7 @@
 .DS_Store
 
 # no log
-.log
+*.log
 
 # Node.js / npm
 node_modules
