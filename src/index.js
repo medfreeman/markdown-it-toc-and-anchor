@@ -183,6 +183,10 @@ export default function(md, options) {
               .reduce((acc, t) => acc + t.content, ""), headingIds)
         }
 
+        if (options.anchorLinkPrefix) {
+          heading._tocAnchor = options.anchorLinkPrefix + heading._tocAnchor
+        }
+
         tocArray.push({
           content,
           anchor: heading._tocAnchor,

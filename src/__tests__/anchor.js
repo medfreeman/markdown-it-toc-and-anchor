@@ -58,4 +58,20 @@ test("markdown-it-toc-and-anchor anchor", (t) => {
     `<span class="octicon octicon-link"></span></a>Heading</h1>\n`,
     "should support GitHub style anchor link"
   )
+
+  t.is(
+    mdIt(
+      `
+# Hello World
+`,
+      {
+        anchorLink: true,
+        anchorLinkPrefix: "section-",
+      }
+    ),
+/* eslint-disable max-len */
+  `<h1 id="section-hello-world"><a class="markdownIt-Anchor" href="#section-hello-world">#</a> Hello World</h1>\n`,
+/* eslint-enable max-len */
+    "should use prefix"
+  )
 })
