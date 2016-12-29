@@ -11,7 +11,7 @@
   ],
   "author": "Maxime Thirouin",
   "license": "MIT",
-  "repository": "https://github.com/MoOx/markdown-it-toc-and-anchor.git",
+  "repository": "https://github.com/medfreeman/markdown-it-toc-and-anchor.git",
   "main": "dist/index.js",
   "files": [
     "dist",
