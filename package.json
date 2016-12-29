@@ -32,6 +32,7 @@
     "coveralls": "^2.11.9",
     "eslint": "^3.12.2",
     "eslint-config-i-am-meticulous": "^5.0.2",
+    "eslint-plugin-import": "^2.2.0",
     "markdown-it": "^8.2.2",
     "npmpub": "^3.1.0",
     "nyc": "^10.0.0"
