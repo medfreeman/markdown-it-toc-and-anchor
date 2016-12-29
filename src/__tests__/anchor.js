@@ -1,4 +1,5 @@
 import test from "ava"
+
 import mdIt from "./utils/md-it"
 
 test("markdown-it-toc-and-anchor anchor", (t) => {
@@ -55,7 +56,7 @@ test("markdown-it-toc-and-anchor anchor", (t) => {
     ),
     `<p></p>
 <h1 id="heading"><a class="anchor" href="#heading">` +
-    `<span class="octicon octicon-link"></span></a>Heading</h1>\n`,
+    "<span class=\"octicon octicon-link\"></span></a>Heading</h1>\n",
     "should support GitHub style anchor link"
   )
 })

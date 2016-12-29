@@ -89,7 +89,7 @@ const treeToMarkdownBulletList = (tree, indent = 0) => tree.map(item => {
             `[${ item.heading.content }](#${ item.heading.anchor })\n`
   }
   else {
-    node += `\n`
+    node += "\n"
   }
   if (item.nodes.length) {
     node += treeToMarkdownBulletList(item.nodes, indent + 1)
@@ -202,7 +202,9 @@ export default function(md, options) {
       attrs.push([ "class", options.tocClassName ])
     }
 
-    tocHtml = markdownItSecondInstance.renderer.render(tocTokens)
+    tocHtml = markdownItSecondInstance.renderer.render(
+        tocTokens, markdownItSecondInstance.options
+    )
 
     if (typeof state.env.tocCallback === "function") {
       state.env.tocCallback.call(undefined, tocMarkdown, tocArray, tocHtml)

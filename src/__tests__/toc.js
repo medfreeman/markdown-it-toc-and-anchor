@@ -1,4 +1,5 @@
 import test from "ava"
+
 import mdIt from "./utils/md-it"
 
 test("markdown-it-toc-and-anchor toc", (t) => {
@@ -16,7 +17,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
     mdIt(
       "@[toc]"
     ),
-    `<p></p>\n`,
+    "<p></p>\n",
     "should do nothing if not asked to"
   )
 
@@ -25,7 +26,7 @@ test("markdown-it-toc-and-anchor toc", (t) => {
       "@[toc]",
       { toc: true }
     ),
-    `<p></p>\n`,
+    "<p></p>\n",
     "should do nothing with no heading"
   )
 
@@ -274,12 +275,9 @@ and next element in the same inline token`
 </ul>
 </li>
 <li><a href="#heading-2">Heading 2</a>
-<ul>
-<li>
+*
 <ul>
 <li><a href="#deeper-heading">Deeper Heading</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -297,9 +295,9 @@ and next element in the same inline token`
       { resetIds: true }
     ),
     [
-      `<h1 id="heading">Heading</h1>\n`,
-      `<h1 id="heading">Heading</h1>\n`,
-      `<h1 id="heading">Heading</h1>\n`,
+      "<h1 id=\"heading\">Heading</h1>\n",
+      "<h1 id=\"heading\">Heading</h1>\n",
+      "<h1 id=\"heading\">Heading</h1>\n",
     ],
     `should return the same anchor hrefs for the same markdown headings with
 same names on different renderings with the same markdownIt instance when 
@@ -312,9 +310,9 @@ resetIds is true`
       { resetIds: false }
     ),
     [
-      `<h1 id="heading">Heading</h1>\n`,
-      `<h1 id="heading-2">Heading</h1>\n`,
-      `<h1 id="heading-3">Heading</h1>\n`,
+      "<h1 id=\"heading\">Heading</h1>\n",
+      "<h1 id=\"heading-2\">Heading</h1>\n",
+      "<h1 id=\"heading-3\">Heading</h1>\n",
     ],
     `should return different anchor hrefs for the same markdown headings with 
 same names on different renderings with the same markdownIt instance when 
