@@ -1,3 +1,8 @@
+# 4.1.2 - 2017-03-07
+
+- Fixed: TypeError: Cannot read property 'breaks' of undefined
+  ([#30](https://github.com/medfreeman/markdown-it-toc-and-anchor/issues/30))
+
 # 4.1.1 - 2016-05-05
 
 - Fixed: inexistent environment in markdown-it parsing on second instance
