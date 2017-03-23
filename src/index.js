@@ -171,7 +171,8 @@ export default function(md, options) {
 
       if (heading.type === "inline") {
         let content
-        if (heading.children && heading.children[0].type === "link_open") {
+        if (heading.children.length > 0 &&
+            heading.children[0].type === "link_open") {
           // headings that contain links have to be processed
           // differently since nested links aren't allowed in markdown
           content = heading.children[1].content
