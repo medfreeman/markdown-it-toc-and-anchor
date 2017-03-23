@@ -1,11 +1,11 @@
 import clone from "clone"
 import uslug from "uslug"
+import Token from "markdown-it/lib/token"
 
 const TOC = "@[toc]"
 const TOC_RE = /^@\[toc\]/im
 
 let markdownItSecondInstance = () => {}
-let Token = () => {}
 let headingIds = {}
 let tocHtml = ""
 
@@ -149,7 +149,6 @@ export default function(md, options) {
   headingIds = {}
 
   md.core.ruler.push("init_toc", function(state) {
-    Token = state.Token
     const tokens = state.tokens
 
     // reset key ids for each document
