@@ -24,7 +24,7 @@ import markdownItTocAndAnchor from "markdown-it-toc-and-anchor"
 markdownIt({
     html: true,
     linkify: true,
-    typography: true,
+    typographer: true,
   })
     .use(markdownItTocAndAnchor, {
       // ...options
@@ -41,7 +41,7 @@ var markdownIt = require('markdown-it'),
 markdownIt({
     html: true,
     linkify: true,
-    typography: true,
+    typographer: true,
   })
     .use(markdownItTocAndAnchor, {
       // ...options
@@ -91,7 +91,7 @@ Example :
   markdownIt({
     html: true,
     linkify: true,
-    typography: true,
+    typographer: true,
   })
     .use(markdownItTocAndAnchor, {
       tocCallback: function(tocMarkdown, tocArray, tocHtml) {
@@ -110,7 +110,7 @@ Example :
   var mdIt = markdownIt({
     html: true,
     linkify: true,
-    typography: true,
+    typographer: true,
   })
     .use(markdownItTocAndAnchor)
 
@@ -130,7 +130,7 @@ Example :
   var mdIt = markdownIt({
     html: true,
     linkify: true,
-    typography: true,
+    typographer: true,
   })
     .use(markdownItTocAndAnchor)
 
