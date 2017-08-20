@@ -100,6 +100,24 @@ and next element in the same inline token`
   t.is(
     mdIt(
       `@[toc]
+# Heading`,
+      {
+        toc: true,
+        tocClassName: null,
+      }
+    ),
+    `<p><ul>
+<li><a href="#heading">Heading</a></li>
+</ul>
+</p>
+<h1 id="heading">Heading</h1>\n`,
+/* eslint-disable max-len */
+  "should handle not including default class in anchors when setting tocClassName to null"
+  )
+
+  t.is(
+    mdIt(
+      `@[toc]
 # 新年快乐`,
       {
         toc: true,
