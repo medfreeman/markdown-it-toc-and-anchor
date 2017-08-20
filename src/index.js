@@ -206,7 +206,10 @@ export default function(md, options) {
     if (typeof tocTokens[0] === "object" &&
         tocTokens[0].type === "bullet_list_open") {
       const attrs = tocTokens[0].attrs = tocTokens[0].attrs || []
-      attrs.push([ "class", options.tocClassName ])
+
+      if (options.tocClassName != null) {
+        attrs.push([ "class", options.tocClassName ])
+      }
     }
 
     tocHtml = markdownItSecondInstance.renderer.render(
