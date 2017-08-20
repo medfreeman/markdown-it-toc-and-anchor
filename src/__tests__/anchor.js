@@ -59,4 +59,20 @@ test("markdown-it-toc-and-anchor anchor", (t) => {
     "<span class=\"octicon octicon-link\"></span></a>Heading</h1>\n",
     "should support GitHub style anchor link"
   )
+
+  t.is(
+    mdIt(
+      `@[toc]
+# Heading
+`,
+      {
+        anchorLink: true,
+        anchorClassName: null,
+      }
+    ),
+    `<p></p>
+<h1 id="heading"><a href="#heading">#</a> Heading</h1>
+`,
+    "should handle not include default class in anchors when setting anchorClassName to null"
+  )
 })
