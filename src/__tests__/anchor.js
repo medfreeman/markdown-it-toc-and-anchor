@@ -73,6 +73,7 @@ test("markdown-it-toc-and-anchor anchor", (t) => {
     `<p></p>
 <h1 id="heading"><a href="#heading">#</a> Heading</h1>
 `,
-    "should handle not including default class in anchors when setting anchorClassName to null"
+    "should handle not including default class" + 
+    " in anchors when setting anchorClassName to null"
   )
 })
