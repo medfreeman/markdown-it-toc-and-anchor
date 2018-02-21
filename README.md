@@ -5,6 +5,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/medfreeman/markdown-it-toc-and-anchor/master.svg)](https://coveralls.io/github/medfreeman/markdown-it-toc-and-anchor?branch=master)
 [![Dependency Status](https://img.shields.io/david/medfreeman/markdown-it-toc-and-anchor.svg)](https://david-dm.org/medfreeman/markdown-it-toc-and-anchor)
 
+
 > markdown-it plugin to add toc and anchor links in headings
 
 ## Installation
@@ -186,6 +187,19 @@ Allows you to customize the anchor link class. If no class is wanted set to `nul
 
 Allows you to reset (or not) ids incrementation. Use it if you will have multiple
 documents on the same page.
+
+#### `slugify`
+
+(default: (using the "[uslug](https://www.npmjs.com/package/uslug)" package)
+
+Allows you to customize the slug function that create ids from string.
+
+Ex:
+```jsx
+   // ...
+   slugify : string => string.replace(/[^\w]/g, '_')
+   // ...
+```
 
 ---
 
