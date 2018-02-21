@@ -187,6 +187,19 @@ Allows you to customize the anchor link class
 Allows you to reset (or not) ids incrementation. Use it if you will have multiple
 documents on the same page.
 
+#### `slugify`
+
+(default: (using the "[uslug](https://www.npmjs.com/package/uslug)" package)
+
+Allows you to customize the slug function that create ids from string.
+
+Ex:
+```jsx
+   // ...
+   slugify : string => string.replace(/[^\w]/g, '_')
+   // ...
+```
+
 ---
 
 ## CONTRIBUTING
