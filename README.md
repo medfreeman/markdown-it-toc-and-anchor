@@ -196,7 +196,7 @@ Allows you to customize the slug function that create ids from string.
 Ex:
 ```jsx
    // ...
-   slugify : string => string.replace(/[^\w]/g, '_')
+   slugify : string => `/some/prefix/${uslug(string).replace(/\//g, '_')}`
    // ...
 ```
 
