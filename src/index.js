@@ -184,7 +184,10 @@ export default function(md, options) {
                 else {
                     content = heading.content
                     heading._tocAnchor = mkSafeSlug(
-                        heading.children.reduce((acc, t) => acc + t.content, ""),
+                        heading.children.reduce(
+                            (acc, t) => acc + t.content, 
+                            ""
+                        ),
                         headingIds,
                         options
                     )
