@@ -63,18 +63,12 @@ test("markdown-it-toc-and-anchor anchor", t => {
   t.is(
     mdIt(
       `@[toc]
-# Heading`,
-      {
-        anchorLink: true,
-        anchorClassName: "anchor",
-        anchorLinkSymbol: "",
-        anchorLinkSymbolClassName: "octicon octicon-link",
-        anchorLinkSpace: false
-      }
+# `,
+      {}
     ),
     `<p></p>
-<h1 id="heading"><a class="anchor" href="#heading">` +
-      '<span class="octicon octicon-link"></span></a>Heading</h1>\n',
+<h1 id=""></h1>
+`,
     "should support empty heading"
   );
 });
