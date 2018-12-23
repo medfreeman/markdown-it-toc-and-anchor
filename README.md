@@ -64,7 +64,7 @@ Allows you to enable/disable the toc transformation of `@[toc]`
 
 (default: `"markdownIt-TOC"`)
 
-Option to customize html class of the `<ul>` wrapping the toc
+Option to customize html class of the `<ul>` wrapping the toc. If no class is wanted set to `null`.
 
 #### `tocFirstLevel`
 
@@ -178,7 +178,7 @@ Allows you to prepend/append the anchor link in the headings
 
 (default: `"markdownIt-Anchor"`)
 
-Allows you to customize the anchor link class
+Allows you to customize the anchor link class. If no class is wanted set to `null`.
 
 #### `resetIds`
 
