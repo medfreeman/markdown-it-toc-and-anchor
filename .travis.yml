@@ -1,9 +1,7 @@
 language: node_js
 
 node_js:
-  - '4'
-  - '5'
-  - '6'
+  - '10'
 
 # fail asap when there is a failure
 matrix:
@@ -11,15 +9,14 @@ matrix:
 
 # cache node modules
 cache:
+  yarn: true
   directories:
     - node_modules
 
 before_install:
   # faster npm install
-  - npm set progress=false
-  # remove useless/non listed deps
-  - npm prune
+  - yarn config set no-progress
 
-script: npm run test-with-coverage
+script: yarn test-with-coverage
 
-after_success: npm run coverage
+after_success: yarn coverage
