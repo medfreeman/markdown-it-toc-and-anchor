@@ -119,4 +119,20 @@ test("markdown-it-toc-and-anchor anchor", t => {
     /* eslint-enable max-len */
     "should support wrapping heading text in the anchor link"
   );
+
+  t.is(
+    mdIt(
+      `
+# Hello World
+`,
+      {
+        anchorLink: true,
+        anchorLinkPrefix: "section-"
+      }
+    ),
+    /* eslint-disable max-len */
+    `<h1 id="section-hello-world"><a class="markdownIt-Anchor" href="#section-hello-world">#</a> Hello World</h1>\n`,
+    /* eslint-enable max-len */
+    "should use prefix"
+  );
 });
