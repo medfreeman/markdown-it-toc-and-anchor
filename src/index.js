@@ -79,7 +79,11 @@ const treeToMarkdownBulletList = (tree, indent = 0) =>
       const indentation = "  ";
       let node = `${repeat(indentation, indent)}*`;
       if (item.heading.content) {
-        node += " " + `[${item.heading.content}](#${item.heading.anchor})\n`;
+        const contentWithoutAnchor = item.heading.content.replace(
+          /\[([^\]]*)\]\([^)]*\)/g,
+          "$1"
+        );
+        node += " " + `[${contentWithoutAnchor}](#${item.heading.anchor})\n`;
       } else {
         node += "\n";
       }
