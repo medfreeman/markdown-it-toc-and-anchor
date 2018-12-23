@@ -166,6 +166,7 @@ export default function(md, options) {
       if (heading.type === "inline") {
         let content;
         if (
+          heading.children &&
           heading.children.length > 0 &&
           heading.children[0].type === "link_open"
         ) {
