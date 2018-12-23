@@ -48,18 +48,18 @@ const renderAnchorLinkSymbol = options => {
 };
 
 const renderAnchorLink = (anchor, options, tokens, idx) => {
-  const attributes = [];
+  const attrs = [];
 
   if (options.anchorClassName != null) {
-    attributes.push(["class", options.anchorClassName]);
+    attrs.push(["class", options.anchorClassName]);
   }
 
-  attributes.push(["href", `#${anchor}`]);
+  attrs.push(["href", `#${anchor}`]);
 
   const linkTokens = [
     {
       ...new Token("link_open", "a", 1),
-      attrs: [...attributes]
+      attrs
     },
     ...renderAnchorLinkSymbol(options),
     new Token("link_close", "a", -1)
