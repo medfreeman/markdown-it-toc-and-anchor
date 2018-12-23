@@ -180,6 +180,12 @@ Allows you to prepend/append the anchor link in the headings
 
 Allows you to customize the anchor link class. If no class is wanted set to `null`.
 
+#### `wrapHeadingTextInAnchor`
+
+(default: `false`)
+
+Makes the entire heading into the anchor link (takes precedence over `anchorLinkSymbol` and `anchorLinkBefore`)
+
 #### `resetIds`
 
 (default: `true`)

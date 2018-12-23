@@ -56,29 +56,37 @@ const renderAnchorLink = (anchor, options, tokens, idx) => {
 
   attrs.push(["href", `#${anchor}`]);
 
-  const linkTokens = [
-    {
-      ...new Token("link_open", "a", 1),
-      attrs
-    },
-    ...renderAnchorLinkSymbol(options),
-    new Token("link_close", "a", -1)
-  ];
-
-  // `push` or `unshift` according to anchorLinkBefore option
-  // space is at the opposite side.
-  const actionOnArray = {
-    false: "push",
-    true: "unshift"
+  const openLinkToken = {
+    ...new Token("link_open", "a", 1),
+    attrs
   };
+  const closeLinkToken = new Token("link_close", "a", -1);
 
-  // insert space between anchor link and heading ?
-  if (options.anchorLinkSpace) {
-    linkTokens[actionOnArray[!options.anchorLinkBefore]](space());
+  if (options.wrapHeadingTextInAnchor) {
+    tokens[idx + 1].children.unshift(openLinkToken);
+    tokens[idx + 1].children.push(closeLinkToken);
+  } else {
+    const linkTokens = [
+      openLinkToken,
+      ...renderAnchorLinkSymbol(options),
+      closeLinkToken
+    ];
+
+    // `push` or `unshift` according to anchorLinkBefore option
+    // space is at the opposite side.
+    const actionOnArray = {
+      false: "push",
+      true: "unshift"
+    };
+
+    // insert space between anchor link and heading ?
+    if (options.anchorLinkSpace) {
+      linkTokens[actionOnArray[!options.anchorLinkBefore]](space());
+    }
+    tokens[idx + 1].children[actionOnArray[options.anchorLinkBefore]](
+      ...linkTokens
+    );
   }
-  tokens[idx + 1].children[actionOnArray[options.anchorLinkBefore]](
-    ...linkTokens
-  );
 };
 
 const treeToMarkdownBulletList = (tree, indent = 0) =>
@@ -147,6 +155,7 @@ export default function(md, options) {
     resetIds: true,
     anchorLinkSpace: true,
     anchorLinkSymbolClassName: null,
+    wrapHeadingTextInAnchor: false,
     ...options
   };
 

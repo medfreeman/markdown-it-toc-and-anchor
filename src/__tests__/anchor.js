@@ -102,4 +102,21 @@ test("markdown-it-toc-and-anchor anchor", t => {
 `,
     "should support custom slugify function from readme"
   );
+
+  t.is(
+    mdIt(
+      `@[toc]
+
+# Heading`,
+      {
+        anchorLink: true,
+        wrapHeadingTextInAnchor: true
+      }
+    ),
+    /* eslint-disable max-len */
+    `<p></p>
+<h1 id="heading"><a class="markdownIt-Anchor" href="#heading">Heading</a></h1>\n`,
+    /* eslint-enable max-len */
+    "should support wrapping heading text in the anchor link"
+  );
 });
