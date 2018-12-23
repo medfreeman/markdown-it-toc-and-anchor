@@ -10,7 +10,7 @@
 ## Installation
 
 ```console
-$ npm install markdown-it-toc-and-anchor
+$ yarn install markdown-it-toc-and-anchor
 ```
 
 ## Usage
