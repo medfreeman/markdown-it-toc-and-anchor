@@ -2,9 +2,7 @@
 
 environment:
   matrix:
-    - nodejs_version: 4
-    - nodejs_version: 5
-    - nodejs_version: 6
+    - nodejs_version: 10
 
 version: "{build}"
 
@@ -17,13 +15,15 @@ matrix:
 
 install:
   - ps: Install-Product node $env:nodejs_version
+  - npm set progress=false
   - npm -g install npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
-  - npm set progress=false
-  - npm prune
-  - npm install
+  - npm -g install yarn
+  - yarn config set no-progress
+  - yarn
 
 test_script:
   - node --version
   - npm --version
-  - npm test
+  - yarn --version
+  - yarn test
