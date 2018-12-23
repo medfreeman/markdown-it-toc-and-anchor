@@ -48,10 +48,18 @@ const renderAnchorLinkSymbol = options => {
 };
 
 const renderAnchorLink = (anchor, options, tokens, idx) => {
+  const attributes = [];
+
+  if (options.anchorClassName != null) {
+    attributes.push(["class", options.anchorClassName]);
+  }
+
+  attributes.push(["href", `#${anchor}`]);
+
   const linkTokens = [
     {
       ...new Token("link_open", "a", 1),
-      attrs: [["class", options.anchorClassName], ["href", `#${anchor}`]]
+      attrs: [...attributes]
     },
     ...renderAnchorLinkSymbol(options),
     new Token("link_close", "a", -1)
@@ -204,7 +212,10 @@ export default function(md, options) {
       tocTokens[0].type === "bullet_list_open"
     ) {
       const attrs = (tocTokens[0].attrs = tocTokens[0].attrs || []);
-      attrs.push(["class", options.tocClassName]);
+
+      if (options.tocClassName != null) {
+        attrs.push(["class", options.tocClassName]);
+      }
     }
 
     tocHtml = markdownItSecondInstance.renderer.render(
