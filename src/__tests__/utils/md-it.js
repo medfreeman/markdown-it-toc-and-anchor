@@ -1,6 +1,6 @@
 import markdownIt from "markdown-it"
 
-import markdownItTocAndAnchor from "../../../src"
+import markdownItTocAndAnchor from "../.."
 
 export default (md, options = {}, mdOptions = {}, renderEnv = {}) => {
   const mdIt = markdownIt({

@@ -1,74 +1,71 @@
-import test from "ava"
+import test from "ava";
 
-import mdIt from "./utils/md-it"
+import mdIt from "./utils/md-it";
 
-test.cb("markdown-it-toc-and-anchor toc-callback", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback", t => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
       "* [Heading](#heading)\n",
       "should work with disabled toc insertion + callback, returning toc only"
-    )
+    );
     t.deepEqual(
       tocArray,
       [
         {
           content: "Heading",
           anchor: "heading",
-          level: 1,
-        },
+          level: 1
+        }
       ],
       "should work with disabled toc insertion + callback, returning toc only"
-    )
+    );
     t.is(
       tocHtml,
       `<ul class="markdownIt-TOC">
 <li><a href="#heading">Heading</a></li>
 </ul>\n`,
       "should work with disabled toc insertion + callback, returning toc only"
-    )
-  }
+    );
+  };
 
   t.is(
-    mdIt(
-      "# Heading",
-      {
-        tocCallback: callback,
-      }
-    ),
-    "<h1 id=\"heading\">Heading</h1>\n",
+    mdIt("# Heading", {
+      tocCallback: callback
+    }),
+    '<h1 id="heading">Heading</h1>\n',
     "should work with disabled toc insertion + callback, returning heading only"
-  )
+  );
 
-  t.end()
-})
+  t.end();
+});
 
-test.cb("markdown-it-toc-and-anchor toc-callback-toc", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback-toc", t => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
       "* [Heading](#heading)\n",
       "should work with enabled toc insertion + callback, returning toc only"
-    )
+    );
     t.deepEqual(
       tocArray,
       [
         {
           content: "Heading",
           anchor: "heading",
-          level: 1,
-        },
+          level: 1
+        }
       ],
       "should work with enabled toc insertion + callback, returning toc only"
-    )
+    );
     t.is(
       tocHtml,
       `<ul class="markdownIt-TOC">
 <li><a href="#heading">Heading</a></li>
 </ul>\n`,
       "should work with enabled toc insertion + callback, returning toc only"
-    )
-  }
+    );
+  };
 
   t.is(
     mdIt(
@@ -76,7 +73,7 @@ test.cb("markdown-it-toc-and-anchor toc-callback-toc", (t) => {
 # Heading`,
       {
         toc: true,
-        tocCallback: callback,
+        tocCallback: callback
       }
     ),
     `<p><ul class="markdownIt-TOC">
@@ -85,31 +82,31 @@ test.cb("markdown-it-toc-and-anchor toc-callback-toc", (t) => {
 </p>
 <h1 id="heading">Heading</h1>\n`,
     "should also work with callback, returning toc and heading"
-  )
+  );
 
-  t.end()
-})
+  t.end();
+});
 
-test.cb("markdown-it-toc-and-anchor toc-callback-md", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback-md", t => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
       "* [Heading](#heading)\n",
       `should work with disabled toc insertion +
       callback in md options, returning toc only`
-    )
+    );
     t.deepEqual(
       tocArray,
       [
         {
           content: "Heading",
           anchor: "heading",
-          level: 1,
-        },
+          level: 1
+        }
       ],
       `should work with disabled toc insertion +
       callback in md options, returning toc only`
-    )
+    );
     t.is(
       tocHtml,
       `<ul class="markdownIt-TOC">
@@ -117,45 +114,45 @@ test.cb("markdown-it-toc-and-anchor toc-callback-md", (t) => {
 </ul>\n`,
       `should work with disabled toc insertion +
       callback in md options, returning toc only`
-    )
-  }
+    );
+  };
 
   t.is(
     mdIt(
       "# Heading",
       {},
       {
-        tocCallback: callback,
+        tocCallback: callback
       }
     ),
-    "<h1 id=\"heading\">Heading</h1>\n",
+    '<h1 id="heading">Heading</h1>\n',
     `should work with disabled toc insertion +
     callback in md options, returning heading only`
-  )
+  );
 
-  t.end()
-})
+  t.end();
+});
 
-test.cb("markdown-it-toc-and-anchor toc-callback-env", (t) => {
+test.cb("markdown-it-toc-and-anchor toc-callback-env", t => {
   const callback = function(tocMarkdown, tocArray, tocHtml) {
     t.is(
       tocMarkdown,
       "* [Heading](#heading)\n",
       `should work with disabled toc insertion +
       callback in md render env, returning toc only`
-    )
+    );
     t.deepEqual(
       tocArray,
       [
         {
           content: "Heading",
           anchor: "heading",
-          level: 1,
-        },
+          level: 1
+        }
       ],
       `should work with disabled toc insertion +
       callback in md render env, returning toc only`
-    )
+    );
     t.is(
       tocHtml,
       `<ul class="markdownIt-TOC">
@@ -163,8 +160,8 @@ test.cb("markdown-it-toc-and-anchor toc-callback-env", (t) => {
 </ul>\n`,
       `should work with disabled toc insertion +
       callback in md render env, returning toc only`
-    )
-  }
+    );
+  };
 
   t.is(
     mdIt(
@@ -172,13 +169,13 @@ test.cb("markdown-it-toc-and-anchor toc-callback-env", (t) => {
       {},
       {},
       {
-        tocCallback: callback,
+        tocCallback: callback
       }
     ),
-    "<h1 id=\"heading\">Heading</h1>\n",
+    '<h1 id="heading">Heading</h1>\n',
     `should work with disabled toc insertion +
     callback in md render env, returning heading only`
-  )
+  );
 
-  t.end()
-})
+  t.end();
+});
