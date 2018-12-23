@@ -219,6 +219,7 @@ and next element in the same inline token`
     mdIt(
       `@[toc]
 # [test](http://google.com)
+## text [test](http://google.com)
 ## **text**
 ## *text*
 ## ~~text~~
@@ -228,6 +229,7 @@ and next element in the same inline token`
     `<p><ul class="markdownIt-TOC">
 <li><a href="#test">test</a>
 <ul>
+<li><a href="#text-test">text test</a></li>
 <li><a href="#text"><strong>text</strong></a></li>
 <li><a href="#text-2"><em>text</em></a></li>
 <li><a href="#text-3"><s>text</s></a></li>
@@ -236,6 +238,7 @@ and next element in the same inline token`
 </ul>
 </p>
 <h1 id="test"><a href="http://google.com">test</a></h1>
+<h2 id="text-test">text <a href="http://google.com">test</a></h2>
 <h2 id="text"><strong>text</strong></h2>
 <h2 id="text-2"><em>text</em></h2>
 <h2 id="text-3"><s>text</s></h2>\n`,
