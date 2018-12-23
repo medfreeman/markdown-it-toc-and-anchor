@@ -11,8 +11,8 @@ let tocHtml = "";
 
 const repeat = (string, num) => new Array(num + 1).join(string);
 
-const makeSafe = (string, headingIds) => {
-  const key = uslug(string); // slugify
+const makeSafe = (string, headingIds, slugifyFn) => {
+  const key = slugifyFn(string); // slugify
   if (!headingIds[key]) {
     headingIds[key] = 0;
   }
@@ -167,6 +167,9 @@ export default function(md, options) {
     let tocMarkdown = "";
     let tocTokens = [];
 
+    const slugifyFn =
+      (typeof options.slugify === "function" && options.slugify) || uslug;
+
     for (let i = 0; i < tokens.length; i++) {
       if (tokens[i].type !== "heading_close") {
         continue;
@@ -185,12 +188,13 @@ export default function(md, options) {
           // headings that contain links have to be processed
           // differently since nested links aren't allowed in markdown
           content = heading.children[1].content;
-          heading._tocAnchor = makeSafe(content, headingIds);
+          heading._tocAnchor = makeSafe(content, headingIds, slugifyFn);
         } else {
           content = heading.content;
           heading._tocAnchor = makeSafe(
             heading.children.reduce((acc, t) => acc + t.content, ""),
-            headingIds
+            headingIds,
+            slugifyFn
           );
         }
 

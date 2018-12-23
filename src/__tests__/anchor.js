@@ -88,4 +88,18 @@ test("markdown-it-toc-and-anchor anchor", t => {
     "should handle not including default class" +
       " in anchors when setting anchorClassName to null"
   );
+
+  t.is(
+    mdIt(
+      `@[toc]
+# test me i'm famous`,
+      {
+        slugify: string => `/some/prefix/${string.replace(/(\/| |')/g, "_")}`
+      }
+    ),
+    `<p></p>
+<h1 id="/some/prefix/test_me_i_m_famous">test me i'm famous</h1>
+`,
+    "should support custom slugify function from readme"
+  );
 });

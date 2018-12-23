@@ -194,9 +194,9 @@ documents on the same page.
 Allows you to customize the slug function that create ids from string.
 
 Ex:
-```jsx
+```js
    // ...
-   slugify : string => `/some/prefix/${uslug(string).replace(/\//g, '_')}`
+   slugify : string => `/some/prefix/${string.replace(/(\/| |')/g, "_")}`
    // ...
 ```
 
