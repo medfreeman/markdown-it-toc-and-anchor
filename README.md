@@ -174,6 +174,12 @@ Allows you to customize the anchor link symbol class name. If not null, symbol w
 
 Allows you to prepend/append the anchor link in the headings
 
+#### `anchorLinkPrefix`
+
+(default: `undefined`)
+
+Allows you to add a prefix to the generated header ids, e.g. `section-`.
+
 #### `anchorClassName`
 
 (default: `"markdownIt-Anchor"`)
