@@ -208,7 +208,7 @@ export default function(md, options) {
         }
 
         if (options.anchorLinkPrefix) {
-          heading._tocAnchor = options.anchorLinkPrefix + heading._tocAnchor
+          heading._tocAnchor = options.anchorLinkPrefix + heading._tocAnchor;
         }
 
         tocArray.push({
