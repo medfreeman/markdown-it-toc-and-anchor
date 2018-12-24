@@ -33,6 +33,17 @@ test("markdown-it-toc-and-anchor toc", t => {
 
   t.is(
     mdIt(
+      `**123**+
+@[toc]`,
+      { toc: true }
+    ),
+    `<p><strong>123</strong>+
+</p>\n`,
+    "should work with line breaks after text before toc"
+  );
+
+  t.is(
+    mdIt(
       `@[tac]
 # Heading`,
       {
@@ -86,7 +97,7 @@ and next element in the same inline token`
 # Heading`,
       {
         toc: true,
-        tocClassName: null,
+        tocClassName: null
       }
     ),
     `<p><ul>
@@ -94,9 +105,9 @@ and next element in the same inline token`
 </ul>
 </p>
 <h1 id="heading">Heading</h1>\n`,
-/* eslint-disable max-len */
-  "should handle not including default class in anchors when setting tocClassName to null"
-  )
+    /* eslint-disable max-len */
+    "should handle not including default class in anchors when setting tocClassName to null"
+  );
 
   t.is(
     mdIt(

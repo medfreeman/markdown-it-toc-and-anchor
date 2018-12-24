@@ -253,19 +253,6 @@ export default function(md, options) {
     let token;
     let match;
 
-    while (
-      state.src.indexOf("\n") >= 0 &&
-      state.src.indexOf("\n") < state.src.indexOf(TOC)
-    ) {
-      if (state.tokens.slice(-1)[0].type === "softbreak") {
-        state.src = state.src
-          .split("\n")
-          .slice(1)
-          .join("\n");
-        state.pos = 0;
-      }
-    }
-
     if (
       // Reject if the token does not start with @[
       state.src.charCodeAt(state.pos) !== 0x40 ||
@@ -290,12 +277,7 @@ export default function(md, options) {
     token = state.push("toc_close", "toc", -1);
 
     // Update pos so the parser can continue
-    const newline = state.src.indexOf("\n");
-    if (newline !== -1) {
-      state.pos = state.pos + newline;
-    } else {
-      state.pos = state.pos + state.posMax + 1;
-    }
+    state.pos = state.pos + 6;
 
     return true;
   });
