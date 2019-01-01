@@ -1,5 +1,5 @@
 # markdown-it-toc-and-anchor
-[![Travis Build Status](https://img.shields.io/travis/medfreeman/markdown-it-toc-and-anchor.svg?label=unix%20build)](https://travis-ci.org/medfreeman/markdown-it-toc-and-anchor)
+[![circleci](https://badgen.net/circleci/github/medfreeman/markdown-it-toc-and-anchor/master)](https://circleci.com/gh/medfreeman/markdown-it-toc-and-anchor)
 [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/medfreeman/markdown-it-toc-and-anchor.svg?label=windows%20build)](https://ci.appveyor.com/project/medfreeman/markdown-it-toc-and-anchor)
 [![Version](https://img.shields.io/npm/v/markdown-it-toc-and-anchor.svg)](https://github.com/medfreeman/markdown-it-toc-and-anchor/blob/master/CHANGELOG.md)
 [![Coverage Status](https://img.shields.io/coveralls/medfreeman/markdown-it-toc-and-anchor/master.svg)](https://coveralls.io/github/medfreeman/markdown-it-toc-and-anchor?branch=master)

@@ -1,0 +1,5 @@
+.*
+*.yml
+src/
+.nyc_output/
+coverage/
