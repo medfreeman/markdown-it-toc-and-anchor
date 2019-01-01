@@ -11,12 +11,14 @@ All notable changes to this project will be documented in this file. See [standa
 * better empty heading check, [#34](https://github.com/medfreeman/markdown-it-toc-and-anchor/issues/34), [#36](https://github.com/medfreeman/markdown-it-toc-and-anchor/issues/36), [#45](https://github.com/medfreeman/markdown-it-toc-and-anchor/issues/45) ([00ddf0b](https://github.com/medfreeman/markdown-it-toc-and-anchor/commit/00ddf0b))
 * remove potential infinite loop, DDOS vector ([1e55cc1](https://github.com/medfreeman/markdown-it-toc-and-anchor/commit/1e55cc1))
 * restore class methods on Token objects ([b1b8855](https://github.com/medfreeman/markdown-it-toc-and-anchor/commit/b1b8855))
+* change typography option to typographer, [#38](https://github.com/medfreeman/markdown-it-toc-and-anchor/pull/38), thanks [cesalberca](https://github.com/cesalberca)
+* nested anchors support, [#46](https://github.com/medfreeman/markdown-it-toc-and-anchor/pull/46), thanks [watagashi](https://github.com/watagashi)
 
 
 ### Features
 
 * add `anchorLinkPrefix` option [#27](https://github.com/medfreeman/markdown-it-toc-and-anchor/pull/27), thanks [ruanyf](https://github.com/ruanyf)
-* 
+* add `wrapHeadingTextInAnchor` option [#28](https://github.com/medfreeman/markdown-it-toc-and-anchor/pull/28), thanks [jsepia](https://github.com/jsepia)
 * add `slugify` option, improve example in README, add corresponding test ([a085aaf](https://github.com/medfreeman/markdown-it-toc-and-anchor/commit/a085aaf))
 
 
