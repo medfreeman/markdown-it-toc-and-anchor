@@ -97,4 +97,3 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
-          attach-workspace: true
