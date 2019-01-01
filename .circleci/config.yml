@@ -62,9 +62,7 @@ jobs:
 
       - persist_to_workspace:
           root: /usr/src/app
-          paths:
-            - dist/*
-            - .circleci/*
+          paths: .
 
   deploy-job:
     <<: *defaults
