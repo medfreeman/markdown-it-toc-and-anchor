@@ -85,7 +85,10 @@ workflows:
   version: 2
   build:
     jobs:
-      - build-job
+      - build-job:
+          filters:
+            tags:
+              only: /^v.*/
       - deploy-job:
           requires:
             - build-job
@@ -94,3 +97,4 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+          attach-workspace: true
