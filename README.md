@@ -3,7 +3,7 @@
 [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/medfreeman/markdown-it-toc-and-anchor.svg?label=windows%20build)](https://ci.appveyor.com/project/medfreeman/markdown-it-toc-and-anchor)
 [![Version](https://img.shields.io/npm/v/markdown-it-toc-and-anchor.svg)](https://www.npmjs.com/package/markdown-it-toc-and-anchor)
 [![Coverage Status](https://img.shields.io/coveralls/medfreeman/markdown-it-toc-and-anchor/master.svg)](https://coveralls.io/github/medfreeman/markdown-it-toc-and-anchor?branch=master)
-[![Dependency Status](https://img.shields.io/david/medfreeman/markdown-it-toc-and-anchor.svg)](https://david-dm.org/medfreeman/markdown-it-toc-and-anchor)
+[![Dependency Status](https://img.shields.io/david/medfreeman/markdown-it-toc-and-anchor.svg)](https://david-dm.org/medfreeman/markdown-it-toc-and-anchor) [![Greenkeeper badge](https://badges.greenkeeper.io/medfreeman/markdown-it-toc-and-anchor.svg)](https://greenkeeper.io/)
 
 > markdown-it plugin to add toc and anchor links in headings
 
