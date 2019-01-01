@@ -15,6 +15,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
+* add `anchorLinkPrefix` option [#27](https://github.com/medfreeman/markdown-it-toc-and-anchor/pull/27), thanks [ruanyf](https://github.com/ruanyf)
+* 
 * add `slugify` option, improve example in README, add corresponding test ([a085aaf](https://github.com/medfreeman/markdown-it-toc-and-anchor/commit/a085aaf))
 
 
