@@ -34,7 +34,7 @@
     "eslint-plugin-import": "^2.2.0",
     "markdown-it": "^8.2.2",
     "nyc": "^13.1.0",
-    "standard-version": "^4.4.0"
+    "standard-version": "^5.0.2"
   },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --fix .",
