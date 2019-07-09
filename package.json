@@ -32,7 +32,7 @@
     "eslint": "^5.11.0",
     "eslint-config-i-am-meticulous": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "markdown-it": "^8.2.2",
+    "markdown-it": "^9.0.0",
     "nyc": "^13.1.0",
     "standard-version": "^4.4.0"
   },
