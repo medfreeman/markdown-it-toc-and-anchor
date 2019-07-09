@@ -25,7 +25,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
-    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-env": "^7.5.4",
     "@babel/register": "^7.0.0",
     "ava": "^1.0.1",
     "coveralls": "^3.0.2",
