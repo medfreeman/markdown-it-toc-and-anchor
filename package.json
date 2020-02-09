@@ -27,7 +27,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
-    "ava": "^1.0.1",
+    "ava": "^3.3.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.11.0",
     "eslint-config-i-am-meticulous": "^11.0.0",
