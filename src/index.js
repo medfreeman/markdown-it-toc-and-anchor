@@ -1,5 +1,5 @@
 import clone from "clone";
-import uslug from "uslug";
+import slug from "slug";
 import Token from "markdown-it/lib/token";
 
 const TOC = "@[toc]";
@@ -175,9 +175,15 @@ export default function(md, options) {
     const tocArray = [];
     let tocMarkdown = "";
     let tocTokens = [];
+    const slugify = function(string) {
+      return slug(string, {
+        symbols: true,
+        lower: true
+      });
+    }
 
     const slugifyFn =
-      (typeof options.slugify === "function" && options.slugify) || uslug;
+      (typeof options.slugify === "function" && options.slugify) || slugify;
 
     for (let i = 0; i < tokens.length; i++) {
       if (tokens[i].type !== "heading_close") {
