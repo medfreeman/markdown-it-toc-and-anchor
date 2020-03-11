@@ -15,8 +15,8 @@ test("markdown-it-toc-and-anchor anchor", t => {
     /* eslint-disable max-len */
     `<p></p>
 <h1 id="heading"><a class="markdownIt-Anchor" href="#heading">#</a> 'Heading' ?</h1>
-<h1 id="lel"><a class="markdownIt-Anchor" href="#lel">#</a> $.lel!</h1>
-<h1 id="lel-2"><a class="markdownIt-Anchor" href="#lel-2">#</a> $.lel?</h1>\n`,
+<h1 id="dollarlel"><a class="markdownIt-Anchor" href="#dollarlel">#</a> $.lel!</h1>
+<h1 id="dollarlel-2"><a class="markdownIt-Anchor" href="#dollarlel-2">#</a> $.lel?</h1>\n`,
     /* eslint-enable max-len */
     "should add anchors"
   );
@@ -36,8 +36,8 @@ test("markdown-it-toc-and-anchor anchor", t => {
     /* eslint-disable max-len */
     `<p></p>
 <h1 id="heading">'Heading' ? <a class="markdownIt-Anchor" href="#heading">#</a></h1>
-<h1 id="lel">$.lel! <a class="markdownIt-Anchor" href="#lel">#</a></h1>
-<h1 id="lel-2">$.lel? <a class="markdownIt-Anchor" href="#lel-2">#</a></h1>\n`,
+<h1 id="dollarlel">$.lel! <a class="markdownIt-Anchor" href="#dollarlel">#</a></h1>
+<h1 id="dollarlel-2">$.lel? <a class="markdownIt-Anchor" href="#dollarlel-2">#</a></h1>\n`,
     /* eslint-enable max-len */
     "should add anchors after"
   );
