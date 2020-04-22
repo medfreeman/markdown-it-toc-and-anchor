@@ -28,7 +28,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
     "ava": "^1.0.1",
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.0.13",
     "eslint": "^5.11.0",
     "eslint-config-i-am-meticulous": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
